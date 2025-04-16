@@ -1,0 +1,746 @@
+<html>
+  <head>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+    <style>
+      body {
+        font-family: 'Crimson Pro', serif;
+        font-size: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    
+
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    
+    
+
+    <title>House Chronicle Generator - A Song of Ice and Fire!</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <h1>House Generator</h1>
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js" defer></script>
+
+    <h2>
+      REALM
+    </h2>
+
+    Your house is
+
+    <script>
+      // displays the users homeland
+      document.write(homeland);
+    </script>
+
+    <script>
+      // Rolls a dice to determine which homeland the user originates from
+      var homeland = Math.floor(Math.random() * 10);
+
+      // Determines the homeland using the roll above
+      switch (homeland) {
+        case 0:
+          document.write(
+            "in the <b>Crownlands.</b>  <br><br>The temperate climate around Blackwater Bay belongs solely to the crown of the Seven Kingdoms." +
+              "The Targaryens controlled the lands from Cracklaw Point to King's Landing, and their indefatigable mark remains on the loyal smallfolk and subdued noble houses."
+          );
+          break;
+        case 1:
+          document.write(
+            "in the <b>Stormlands.</b> <br><br>A land of harsh mountains, verdant forests, stony shores, and the Dornish Mountains." +
+              " Rough wilderness breeds avid hunters and a reputation for being as stormy as their weather."
+          );
+          break;
+        case 2:
+          document.write(
+            "in <b>The North</b>. <br><br>The largest of Westeros' realms, it cleaves closest to the ways and customs of the First Men." +
+              " Thinly populated, the people of the North often have much larger holdings and a closer relationship to their liege lord."
+          );
+          break;
+        case 3:
+          document.write(
+            "on the <b>Iron Islands.</b> <br><br> The islands surrounding Ironman's Bay is home to the Ironborn men who celebrate their lineage of pillage and plunder," +
+              " for the little meager soil leaves little food and fewer resources for trade. The hold of the Seven Kingdoms over the ironmen is tenuous at best."
+          );
+          break;
+        case 4:
+          document.write(
+            "in the <b>Riverlands</b> <br><br>Rich, fertile, populous, connected. Smallfolk ply the rivers laden with goods." +
+              " Rivermen engage in endless internal quarrel over territory and tax. Large towns dot rolling hills with no obvious boundaries."
+          );
+          break;
+        case 5:
+          document.write(
+            "in the <b>The Vale</b> <br> <br> The Mountains of the Moon protect a rich land of reliable warriors and dangerous mountain clans." +
+              " The sweet bounty of the Vale is matched by its fearsome exterior; elite and reliable warriors of the towns clash with the freebooting Burned Men of the hills."
+          );
+          break;
+        case 6:
+          document.write(
+            "in the <b>Westerlands</b> <br><br> The westermen are neither blessed with population nor fertile lands, but they are the richest." +
+              " Craggy hills and sweeping plains dot a diverse landscape along the Sunset Sea. Though the reputation of the Westerlands has declined in recent years," +
+              " no man antagonizes them without thought, for few are the armies that can invade the Westerlands, and no beast is more feared than the lion."
+          );
+          break;
+        case 7:
+          document.write(
+            "in <b>The Reach</b>. <br><br> The Reach of the river Mander is fertile beyond all others, and rightly wealthy for it." +
+              " The golden coins and verdant fields of the Reach afford their lords fine wines and finer steel. Its population dwarfs its neighbors;" +
+              " men of the Reach imagine themselves as the most chivalrous and honorable of the Seven Kingdoms."
+          );
+          break;
+        case 8:
+          document.write(
+            "in <b>Dorne</b>. <br><br> The warm and arid Dorne has always been a place apart from Westeros." +
+              " The blood and culture of Rhoynar in Essos give Dornishmen an reputation for hot-blood, spicy food, and a liberal attitude to sex and family."
+          );
+          break;
+        case 9:
+          document.write(
+            "in <b>The Reach</b>. <br><br> The Reach of the river Mander is fertile beyond all others, and rightly wealthy for it." +
+              " The golden coins and verdant fields of the Reach afford their lords fine wines and finer steel." +
+              " Its population dwarfs its neighbors; men of the Reach imagine themselves as the most chivalrous and honorable of the Seven Kingdoms."
+          );
+      }
+    </script>
+
+    <script>
+      // array containing the homelands effective defenses
+      var defenseRating = [
+        "0 - Your lands are ruined. Ravaged by war, struck by disaster, or abandoned. There are no defensible structures of any kind, and no infrastructure for moving troops or goods.",
+        "10 - Wilderness; a few roads and a minor stronghold. Is this the result of neglect, or is it virgin land?",
+        "20 - A lonely keep, not comfortable but capable of projecting power. A single well-maintained road; two ports if water permits.",
+        "30 - A defensible territory with a fortified town and castle fed by roads and trails and defended by rivers and ports. Reputation keeps it safe. ",
+        "40 - A castle and more strong points throughout the holdings. Easy transportation from roads and rivers. Natural terrain provides exceptional fortification.",
+        "50 - Extraordinary defenses with structures, walls, and terrain features that, when combined, make attacking this land very costly indeed.",
+        "60 - Very good defenses; a castle, walls, terrain features and more. Ports and rivers make for extremely developed infrastructure.",
+        "70 - Astonishing; a rival to Casterly Rock; a massive castle with excellent infrastructure. Experimental and advanced forms of transport and internal movement.",
+        "80 - Impenetrable, legendary, and inconceivably well-defended; the Eyrie in the Vale or Dragonstone. Ports, roads, and defenses that are literally the stuff of legend. "
+      ];
+
+      // Rolls a D6 to determine the base defense
+      var defenseRoll = Math.floor(Math.random() * 6);
+
+      // modifies the roll above based upon homeland
+      switch (homeland) {
+        case 0:
+          defenseRoll = defenseRoll + 1;
+          break;
+        case 1:
+          defenseRoll = defenseRoll;
+          break;
+        case 2:
+          defenseRoll = defenseRoll + 1;
+          break;
+        case 3:
+          defenseRoll = defenseRoll + 2;
+          break;
+        case 4:
+          defenseRoll = defenseRoll - 1;
+          break;
+        case 5:
+          defenseRoll = defenseRoll + 3;
+          break;
+        case 6:
+          defenseRoll = defenseRoll;
+          break;
+        case 7:
+          defenseRoll = defenseRoll - 1;
+          break;
+        case 8:
+          defenseRoll = defenseRoll + 1;
+          break;
+        case 9:
+          defenseRoll = defenseRoll - 1;
+          break;
+      }
+
+      // bounds protection, as you cannot have less than 0
+      if (defenseRoll < 0) {
+        defenseRoll = 0;
+      }
+
+      // determines the users defenses based upon the modified roll
+      var defenseResult = defenseRating[defenseRoll];
+    </script>
+
+    <!-- next up is influence-->
+
+    <script>
+      // array containing the influence of the house
+      var influenceRating = [
+        "0 - The house's name and history are invisible to records. No one speaks of them.",
+        "10 - A minor landed knight or the equivalent, such as Craster or Bonnifer Hasty.",
+        "20 - A greater landed knight or the equivalent, such as House Connington or other minor gentry.",
+        "30 - Yours is a small minor house, such as House Mormont or House Westerling. ",
+        "40 - A minor house, such as House Clegane, House Karstark. Your house may be a cadet branch of a major house. ",
+        "50 - A powerful minor house with colorful history, such ase House Florrent or House Frey.",
+        "60 - The house is not a great house, but is prestigious enough to be one if a great house were to fall. Comparable to House Tully or Martell.",
+        "70 - Comparable to one the Great Houses of Westeros.",
+        "80 - An immortal and legendary house. House Stark, House Baratheon, House Lannister. "
+      ];
+
+      // Rolls a D6 to determine the base influence
+      var influenceRoll = Math.floor(Math.random() * 6);
+
+      // modifies the roll above based upon homeland
+      switch (homeland) {
+        case 0:
+          influenceRoll = influenceRoll - 1;
+          break;
+        case 1:
+          influenceRoll = influenceRoll;
+          break;
+        case 2:
+          influenceRoll = influenceRoll + 2;
+          break;
+        case 3:
+          influenceRoll = influenceRoll - 1;
+          break;
+        case 4:
+          influenceRoll = influenceRoll - 1;
+          break;
+        case 5:
+          influenceRoll = influenceRoll + 2;
+          break;
+        case 6:
+          influenceRoll = influenceRoll + 2;
+          break;
+        case 7:
+          influenceRoll = influenceRoll + 2;
+          break;
+        case 8:
+          influenceRoll = influenceRoll;
+          break;
+        case 9:
+          influenceRoll = influenceRoll + 2;
+          break;
+      }
+
+      // bounds protection, as you cannot have less than 0
+      if (influenceRoll < 0) {
+        influenceRoll = 0;
+      }
+
+      // determines the users influences based upon the modified roll
+      var influenceResult = influenceRating[influenceRoll];
+    </script>
+
+    <!-- land size-->
+
+    <script>
+      // array containing the landsize of the house
+      var landsizeRating = [
+        "0 - The house is landless, completely stripped of its holdings - perhaps for the reasons listed below in History. They still claim the land described throughout Fortunes.",
+        "10 - Your house controls a speck of land no larger than a town and its environs.",
+        "20 - The house controls a stretch of land the size of a small island or a portion of a larger island; or possibly a city and its environs.",
+        "30 - The family controls a modest stretch of land, such as House Frey. It appears on maps.",
+        "40 - An area of land with several different terrain features, islands, or a group of islands - such as House Greyjoy.",
+        "50 - A large area of land spread across a great distance. This area likely has a wide variety of terrain features.",
+        "60 - A huge area of land, comparable to House Martell's control of Dorne. Numerous terrain types.",
+        "70 - The house has a massive portion of Westeros's geography, less than but comparable to House Stark's command of the North.",
+        "80 - Most if not all of the Seven Kingdoms. The holdings of King Robert and the royal branch of House Baratheon."
+      ];
+
+      // Rolls a D6 to determine the base landsize
+      var landsizeRoll = Math.floor(Math.random() * 5);
+
+      // modifies the roll above based upon homeland
+      switch (homeland) {
+        case 0:
+          landsizeRoll = landsizeRoll - 1;
+          break;
+        case 1:
+          landsizeRoll = landsizeRoll - 1;
+          break;
+        case 2:
+          landsizeRoll = landsizeRoll + 3;
+          break;
+        case 3:
+          landsizeRoll = landsizeRoll - 1;
+          break;
+        case 4:
+          landsizeRoll = landsizeRoll + 1;
+          break;
+        case 5:
+          landsizeRoll = landsizeRoll - 1;
+          break;
+        case 6:
+          landsizeRoll = landsizeRoll - 1;
+          break;
+        case 7:
+          landsizeRoll = landsizeRoll;
+          break;
+        case 8:
+          landsizeRoll = landsizeRoll + 2;
+          break;
+        case 9:
+          landsizeRoll = landsizeRoll;
+          break;
+      }
+
+      // bounds protection, as you cannot have less than 0
+      if (landsizeRoll < 0) {
+        landsizeRoll = 0;
+      }
+
+      // determines the users landsizes based upon the modified roll
+      var landsizeResult = landsizeRating[landsizeRoll];
+    </script>
+
+    <script>
+      // array containing the law of the house
+      var lawRating = [
+        "0 - A lawless, uncivilized land. You have no authority here.",
+        "10 - Most of the land is out of your reach. Only pockets of authority around strongpoints allow control or feudal taxation.",
+        "20 - Bandits, raiders, and criminals are afoot in your lands, causing mischief and trouble.",
+        "30 - Lawlessness and banditry are a small but real problem along the fringes of your lands.",
+        "40 - Crime is a part of life. It is uncommon, but not out of control. The smallfolk do not complain.",
+        "50 - You have a great deal of control over your lands, and crime is uncommon.",
+        "60 - Such is your influence and devotion to maintaining the peace that violent crime is all but unheard of, and crime is rare.",
+        "70 - There is 'no crime' in your lands.",
+        "80 - There is no crime in your lands."
+      ];
+
+      // Rolls a D6 to determine the base law
+      var lawRoll = Math.floor(Math.random() * 5);
+
+      // modifies the roll above based upon homeland
+      switch (homeland) {
+        case 0:
+          lawRoll = lawRoll + 3;
+          break;
+        case 1:
+          lawRoll = lawRoll + 2;
+          break;
+        case 2:
+          lawRoll = lawRoll - 2;
+          break;
+        case 3:
+          lawRoll = lawRoll;
+          break;
+        case 4:
+          lawRoll = lawRoll;
+          break;
+        case 5:
+          lawRoll = lawRoll - 2;
+          break;
+        case 6:
+          lawRoll = lawRoll - 1;
+          break;
+        case 7:
+          lawRoll = lawRoll - 1;
+          break;
+        case 8:
+          lawRoll = lawRoll - 1;
+          break;
+        case 9:
+          lawRoll = lawRoll - 1;
+          break;
+      }
+
+      // bounds protection, as you cannot have less than 0
+      if (lawRoll < 0) {
+        lawRoll = 0;
+      }
+
+      // determines the users laws based upon the modified roll
+      var lawResult = lawRating[lawRoll];
+    </script>
+
+    <script>
+      // array containing the population of the house
+      var populationRating = [
+        "0 - Barren. They say none live under your rule.",
+        "10 - Thinly populated. Tiny settlements scattered across your lands.",
+        "20 - Small populations but no single community larger than a single town.",
+        "30 - Typical population. Smallfolk on farmsteads and hamlets, but a few small towns and a largee community around the seat of your power.",
+        "40 - Modest population. At least one town and several small hamlets.",
+        "50 - Notable population. A large town and smaller hamlets across the area. A center of trade.",
+        "60 - Immense population. An enormous number of people live under your protection. Multiple large towns and maybe even a small city.",
+        "70 - Your lands encompass a massive number of people, hamlets, and overpopulated towns.",
+        "80 - All of Westeros lives in your land."
+      ];
+
+      // Rolls a D6 to determine the base population
+      var populationRoll = Math.floor(Math.random() * 6);
+
+      // modifies the roll above based upon homeland
+      switch (homeland) {
+        case 0:
+          populationRoll = populationRoll + 1;
+          break;
+        case 1:
+          populationRoll = populationRoll + -1;
+          break;
+        case 2:
+          populationRoll = populationRoll - 1;
+          break;
+        case 3:
+          populationRoll = populationRoll;
+          break;
+        case 4:
+          populationRoll = populationRoll;
+          break;
+        case 5:
+          populationRoll = populationRoll - 1;
+          break;
+        case 6:
+          populationRoll = populationRoll - 1;
+          break;
+        case 7:
+          populationRoll = populationRoll + 1;
+          break;
+        case 8:
+          populationRoll = populationRoll;
+          break;
+        case 9:
+          populationRoll = populationRoll + 1;
+          break;
+      }
+
+      // bounds protection, as you cannot have less than 0
+      if (populationRoll < 0) {
+        populationRoll = 0;
+      }
+
+      // determines the users populations based upon the modified roll
+      var populationResult = populationRating[populationRoll];
+    </script>
+
+    <script>
+      // array containing the power of the house
+      var powerRating = [
+        "0 - All but powerless. You have no troops, no soldiers, and none loyal to your family.",
+        "10 - With only your personal guard and a sworn sword you defend your land.",
+        "20 - A small force of soldiers of smallfolk and a few sworn soldiers, you are a minor power.",
+        "30 - A modest force of soldiers, including some trained troops and a banner house serving you.",
+        "40 - You have a trained force of soldiers, including cavalry, and the service of at least two banner houses.",
+        "50 - A diverse force of trained and competent soldiers includes infantry, cavalry, archers, and ships. Houses owe their loyalty to you.",
+        "60 - You have immense power; a huge force of soldiers and sailors. Great houses rely on you when they go to war.",
+        "70 - You have strength comparable to any force in the Seven Kingdoms.",
+        "80 - There is no force you cannot defeat."
+      ];
+
+      // Rolls a D6 to determine the base power
+      var powerRoll = Math.floor(Math.random() * 5);
+
+      // modifies the roll above based upon homeland
+      switch (homeland) {
+        case 0:
+          powerRoll = powerRoll;
+          break;
+        case 1:
+          powerRoll = powerRoll;
+          break;
+        case 2:
+          powerRoll = powerRoll;
+          break;
+        case 3:
+          powerRoll = powerRoll + 2;
+          break;
+        case 4:
+          powerRoll = powerRoll;
+          break;
+        case 5:
+          powerRoll = powerRoll;
+          break;
+        case 6:
+          powerRoll = powerRoll;
+          break;
+        case 7:
+          powerRoll = powerRoll + 1;
+          break;
+        case 8:
+          powerRoll = powerRoll;
+          break;
+        case 9:
+          powerRoll = powerRoll + 1;
+          break;
+      }
+
+      // bounds protection, as you cannot have less than 0
+      if (powerRoll < 0) {
+        powerRoll = 0;
+      }
+
+      // determines the users powers based upon the modified roll
+      var powerResult = powerRating[powerRoll];
+    </script>
+
+    <script>
+      // array containing the wealth of the house
+      var wealthRating = [
+        "0 - Destitute, penniless.",
+        "10 - Poor, haggard, impoverished. Lacking essential resources and struggling to balance the books.",
+        "20 - Fairly poor, with little excess. They do not live in luxury.",
+        "30 - Common. Your house has enough to get by, but only just. Another Spring Sickness might ruin you.",
+        "40 - Prosperous; your family has the funds to live in accordance with their station.",
+        "50 - Affluent; your family has more than it needs, and lives in comfort.",
+        "60 - Wealthy; your family wants for nothing. They might even have excess to improve their lands.",
+        "70 - Decadent; your family wants for nothing, and can give freely.",
+        "80 - Ludicrously decadent; your family is so wealthy they have seven-course feasts on a whim."
+      ];
+
+      // Rolls a D6 to determine the base wealth
+      var wealthRoll = Math.floor(Math.random() * 5);
+
+      // modifies the roll above based upon homeland
+      switch (homeland) {
+        case 0:
+          wealthRoll = wealthRoll - 1;
+          break;
+        case 1:
+          wealthRoll = wealthRoll;
+          break;
+        case 2:
+          wealthRoll = wealthRoll - 1;
+          break;
+        case 3:
+          wealthRoll = wealthRoll;
+          break;
+        case 4:
+          wealthRoll = wealthRoll + 1;
+          break;
+        case 5:
+          wealthRoll = wealthRoll;
+          break;
+        case 6:
+          wealthRoll = wealthRoll + 3;
+          break;
+        case 7:
+          wealthRoll = wealthRoll + 1;
+          break;
+        case 8:
+          wealthRoll = wealthRoll;
+          break;
+        case 9:
+          wealthRoll = wealthRoll + 1;
+          break;
+      }
+
+      // bounds protection, as you cannot have less than 0
+      if (wealthRoll < 0) {
+        wealthRoll = 0;
+      }
+
+      // determines the users wealths based upon the modified roll
+      var wealthResult = wealthRating[wealthRoll];
+    </script>
+
+    <br />
+    <h2>
+      FORTUNES
+    </h2>
+    <b>DEFENSE</b>:<script>
+      document.write(defenseResult);</script
+    ><br /><br />
+    <b>INFLUENCE</b>:<script>
+      document.write(influenceResult);</script
+    ><br />
+    <br /><b>LANDS</b>:<script>
+      document.write(landsizeResult);</script
+    ><br />
+    <br /><b>LAW</b>:<script>
+      document.write(lawResult);
+    </script>
+    <br /><br /><b>POPULATION</b>:<script>
+      document.write(populationResult);</script
+    ><br />
+    <br /><b>POWER</b>:<script>
+      document.write(powerResult);</script
+    ><br />
+    <br /><b>WEALTH</b>:<script>
+      document.write(wealthResult);
+    </script>
+    <br />
+    <br />
+
+    <h2>
+      HISTORY
+    </h2>
+
+    <br />
+    <br />
+    <i>Age</i> -
+    <script>
+      var age = Math.floor(Math.random() * 6);
+
+      switch (age) {
+        case 0:
+          document.write(
+            "<b>NEW</b>: Some call it <i>Robert's Rebellion</i> and others call it the <i>War of the Usurper</i> but your house calls it a new beginning. Your house rose as the Targaryens fell and Robert Baratheon reigned in King's Landing. <br>"
+          );
+          break;
+        case 1:
+          document.write(
+            "<b>RECENT</b> - The Blackfyre Rebellion ended with cruel punishments of the losers who supported Daemon. New houses, including yours, arose in a brutal period of civil war and reprisal.<br>"
+          );
+          break;
+        case 2:
+          document.write(
+            "<b>ESTABLISHED</b> - Aegon the Conquerer conquered Westeros with silver and steel. Your house came to prominence during the time of the Conquest.<br>"
+          );
+          break;
+        case 3:
+          document.write(
+            "<b>OLD</b> - The rise of the Valyrian Freehold meant the exodus of the Rhoynar. Your house claims lineage to the Ten Thousand Ships that landed in Westeros.<br>"
+          );
+          break;
+        case 4:
+          document.write(
+            "<b>VERY OLD</b> - Your house dates to the Coming of the Andals. The petty kingdoms of the First Men were subsumed by the Andals from Essos. It was an age of intermarriage, exploration, and the end of the Pact.<br>"
+          );
+          break;
+        case 5:
+          document.write(
+            "<b>ANCIENT</b> - Your house dates back to the The Age of Heroes. The time of the Pact, the building of The Wall, the First Men.<br>"
+          );
+          break;
+      }
+    </script>
+
+    <br /><i
+      >The first event narrates the rise to power, and explains how the house
+      gained its nobility.</i
+    ><br />
+    <br />
+    <br />
+    <script>
+      for (var i = 0; i < age + 1; i++) {
+        var event = Math.floor(Math.random() * 22);
+        switch (event) {
+          case 0:
+            document.write(
+              "<br><b><br>•RIVALRY</b>: A terrible event led to an everlasting hatred between your house and another. Their house and yours will never see eye-to-eye, never cease their rivalry, and never give in to the other's demands - unless one of the houses is brought to its knees.<br>"
+            );
+            break;
+          case 1:
+            document.write(
+              "<br>•<b>ALLIANCE</b>: A deep and lasting bond was made with another house. It was in the same Realm, or in another realm but neighboring to yours. The relationship was sealed with marriage and monument.<br>"
+            );
+            break;
+          case 2:
+            document.write(
+              "<br>•<b>GUEST</b>: An advisor of unusual bearing was brought to your court. Whether they were a witch, a Maester, a foreigner from the Sunset Isles, they spent some years with you and brought unexpected blessings to the house.<br>"
+            );
+            break;
+          case 3:
+            document.write(
+              "<br>•<b>PEACE</b>: The records state that there was peace in your house in this time. Some think that there was no peace, but the records are spotty.<br>"
+            );
+            break;
+          case 4:
+            document.write(
+              "<br>•<b>REVOLT</b>: A revolt against your holdings was led by malcontent smallfolk <i>or</i> a pretender to your claims. They were defeated, but not without costly measures.<br>"
+            );
+            break;
+          case 5:
+            document.write(
+              "<br>•<b>CATASTROPHE</b>: Plague, blight, drought; a natural disaster brought great suffering to your house. <br>"
+            );
+            break;
+          case 6:
+            document.write(
+              "<br>•<b>CONQUEST</b>: Your family fought and defeated an enemy, annexing their holdings to your own. It brought with it the troubler of old loyalties, weakening your hold over the smallfolk.<br>"
+            );
+            break;
+          case 7:
+            document.write(
+              "<br>•<b>DEFEAT</b>: Wars always have losers. Status, resources, influence and men were all spent to no avail, and your line was forced to marriages of convenience to avoid extinction.<br>"
+            );
+            break;
+          case 8:
+            document.write(
+              "<br>•<b>DESCENT</b>: A poor marriage, a downturn in trade, tragic losses in battle. A period of decline from poor decisions.<br>"
+            );
+            break;
+          case 9:
+            document.write(
+              "<br>•<b>DOOM</b>: A <i>series</i> of calamities befell your house. Your line was nearly erased in events not in the control of mortal men. It is possible thata the disasters were of supernatural origin, such as the Doom of Valyria or a curse.<br>"
+            );
+            break;
+          case 10:
+            document.write(
+              "<br>•<b>FAVOR</b>: Your family gained the favor of the king, their lord, the Faith, or another powerful body. Not only did their fortunes improve, but the house's standing and responsibilites grew as well. A member was appointed to a high rank, such as the Great Septon or as a Kingsguard.<br>"
+            );
+            break;
+          case 11:
+            document.write(
+              "<br>•<b>GLORY</b>: The family won great glory through personal heroism and intrepid valor. The responsible ancestor is still spoken of highly.<br>"
+            );
+            break;
+          case 12:
+            document.write(
+              "<br><b>•INFRASTRUCTURE</b>: A time of peace and prosperity allowed the house to prosper and expand.<br>"
+            );
+            break;
+          case 13:
+            document.write(
+              "<br>•<b>INVASION</b>: A period of collapse, destruction, and ruin. An invasion from afar - ironmen, traitorous bannermen, wildlings, strangers.<br>"
+            );
+            break;
+          case 14:
+            document.write(
+              "<br>•<b>MADNESS</b>: Inbreeding, fell secrets, disease; the people of Westeros are no stranger to bouts of delusion. A figure from your household was afflicted with a strange madness, and stories of the incident still provoke strong emotions.<br>"
+            );
+            break;
+          case 15:
+            document.write(
+              "<br>•<b>SCANDAL</b>: The house was involved in some great scandal that haunts them still. A notable bastard-prince, a lurid incest, a failed conspiracy, an act of severe corruption.<br>"
+            );
+            break;
+          case 16:
+            document.write(
+              "<br>•<b>TREACHERY</b>: Either your house suffered the results of a cruel treachery, or perpetrated a duplicitous act. The event stains the family's name.<br>"
+            );
+            break;
+          case 17:
+            document.write(
+              "<br>•<b>VICTORY</b> - Your family achieved a great triumph over their enemies. Ironmen reavers, a King-Beyond-the-Wall, a rival house; enemies foreign or familiar. Victory brought great power and nobility.<br>"
+            );
+            break;
+          case 18:
+            document.write(
+              "<br>•<b>VILLAIN</b> - Your family produced a character of unspeakable cruelty and wickedness. Their name is still whispered with dread. They may have committed terrible crimes in their home, or killed guests under protection. Future events may be the result of this villainy.<br>"
+            );
+            break;
+          case 19:
+            document.write(
+              "<br>•<b>WINDFALL</b> - A boon, a blessing that catapults your family into fame or infamy. A marriage of great import, a gift from the king, the discovery of a new boon on your lands.<br>"
+            );
+            break;
+          case 20:
+            document.write(
+              "<br>•<b>PROWESS</b> - A member of your house won a massive tournament held in King's Landing. The prize of gold and silver was good, but nothing compared to the prestige. The warrior is still spoken of fondly throughout your realm.<br>"
+            );
+            break;
+          case 21:
+            document.write(
+              "<br>•<b>OMEN</b>: A terrible omen befell your house - a vision of a raven, a plague of rats, three windmills burning, twenty doves in formation. It is up to you if the omen is good or bad, and if the events came to pass.<br>"
+            );
+        }
+      }
+    </script>
+
+    <br />
+    <br />
+    <br />
+    Choose the <b>words</b> of your house and create the <b>heraldry</b> to
+    define your family's place in the world.
+  </body>
+</html>
